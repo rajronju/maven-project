@@ -27,13 +27,13 @@ stages{
             parallel{
                 stage ('Deploy to Staging'){
                     steps {
-                       bat "winscp.com -i /c/Users/rajro/AWS-zahid-ca-central-2019-01-02.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
+                       shell "winscp.com -i /c/Users/rajro/AWS-zahid-ca-central-2019-01-02.pem **/target/*.war ec2-user@${params.tomcat_dev}:/var/lib/tomcat7/webapps"
                     }
                 }
 
                 stage ("Deploy to Production"){
                     steps {
-                       bat "WinSCP.com -i /c/Users/rajro/AWS-zahid-ca-central-2019-01-02.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
+                       shell "WinSCP.com -i /c/Users/rajro/AWS-zahid-ca-central-2019-01-02.pem **/target/*.war ec2-user@${params.tomcat_prod}:/var/lib/tomcat7/webapps"
                     }
                 }
             }
